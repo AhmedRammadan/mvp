@@ -1,8 +1,10 @@
 package com.example.mvp.ui_Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +20,7 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         et_email = findViewById(R.id.et_email2);
         et_password = findViewById(R.id.et_password2);
         btn_login = findViewById(R.id.btn_login2);
@@ -44,5 +46,20 @@ public class Main2Activity extends AppCompatActivity {
             Toast.makeText(this, "isSuccess", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this,MainActivity.class));
+        finish();
+        super.onBackPressed();
     }
 }
